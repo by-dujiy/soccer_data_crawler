@@ -16,12 +16,11 @@ LEAGUES_ARCHIVE = {
 sb = ScrapingBot(3, 30)
 
 if __name__ == '__main__':
-    Model.metadata.create_all(engine)
+    # Model.metadata.create_all(engine)
     # Model.metadata.drop_all(engine)
     urls = sb.parse_league_page("football/england/premier-league-2023-2024/results/")
     for event_url in urls:
         match_data = sb.parse_match(event_url)
         if match_data:
             add_match(match_data)
-
     sb.quit()
